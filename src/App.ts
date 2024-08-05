@@ -1,3 +1,6 @@
+import Get from './routes/Get'
+import Login from './routes/Login'
+
 import fastify from 'fastify'
 import fastifyFormBody from '@fastify/formbody'
 
@@ -8,6 +11,12 @@ const app = fastify({
 })
 
 app.register(fastifyFormBody)
+
+const routes = [Get, Login]
+
+for (const route of routes) {
+    app.register(route, { prefix: '/php'})
+}
 
 app.listen({ port: 7000 }, err => {
     if (err) {
