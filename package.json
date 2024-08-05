@@ -1,0 +1,21 @@
+{
+    "name": "vanilla-api",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "nodemon --watch src src/App.ts"
+    },
+    "author": "wizguin",
+    "license": "MIT",
+    "devDependencies": {
+        "@fastify/formbody": "^7.4.0",
+        "@prisma/client": "^5.17.0",
+        "@types/bcrypt": "^5.0.2",
+        "@types/node": "^22.1.0",
+        "bcrypt": "^5.1.1",
+        "fastify": "^4.28.1",
+        "nodemon": "^3.1.4",
+        "prisma": "^5.17.0",
+        "typescript": "^5.5.4"
+    }
+}
