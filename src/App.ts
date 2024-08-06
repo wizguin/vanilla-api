@@ -1,4 +1,5 @@
 import Get from './routes/Get'
+import Join from './routes/Join'
 import Login from './routes/Login'
 
 import fastify from 'fastify'
@@ -12,7 +13,7 @@ const app = fastify({
 
 app.register(fastifyFormBody)
 
-const routes = [Get, Login]
+const routes = [Get, Join, Login]
 
 for (const route of routes) {
     app.register(route, { prefix: '/php'})
