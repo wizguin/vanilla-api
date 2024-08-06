@@ -1,4 +1,4 @@
-import { InvalidUsernameError, UserNotFoundError } from '../errors/Errors'
+import { UserNotFoundError } from '../errors/Errors'
 import Database from '../database/Database'
 
 import { hash } from 'bcrypt'
@@ -10,9 +10,6 @@ export interface CreateUser {
     password: string,
     color: number
 }
-
-// Letters, numbers, spaces, at least one letter
-const validNameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9 ]*$/
 
 export async function getUserByUsername(username: string) {
     if (!username) {
@@ -91,50 +88,4 @@ export function getCrumb(user: User) {
         frame,
         member
     ].join('|')
-}
-
-export async function validateName(name: string) {
-    name = name.trim().replace(/\s+/g, ' ')
-
-    if (name.length < 4 || name.length > 12) {
-        throw new InvalidUsernameError()
-    }
-
-    if (name.toLowerCase().startsWith('penguin')) {
-        throw new InvalidUsernameError()
-    }
-
-    if (!validNameRegex.test(name)) {
-        throw new InvalidUsernameError()
-    }
-
-    name = toTitleCase(name)
-
-    const user = await Database.user.findFirst({
-        where: {
-            username: name
-        }
-    })
-
-    if (user !== null) {
-        throw new InvalidUsernameError()
-    }
-
-    return name
-}
-
-export function validateColor(color: string) {
-    const parsed = parseInt(color)
-
-    if (!isNaN(parsed) && parsed >= 1 && parsed <= 12) {
-        return parsed
-    }
-
-    return 1
-}
-
-function toTitleCase(str: string) {
-    return str.replace(/\w\S*/g, (word: string) => (
-        word.charAt(0).toUpperCase() + word.substring(1).toLowerCase()
-    ))
 }

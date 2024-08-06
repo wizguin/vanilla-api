@@ -1,6 +1,6 @@
 import { delimiter, makeXt, parseXml, parseXt } from './packet/Packet'
-import { InvalidUsernameError } from '../errors/Errors'
-import { validateName } from '../user/User'
+import { InvalidJoinError } from '../errors/Errors'
+import { validateName } from '../user/Validation'
 
 import { Element } from 'elementtree'
 import net from 'net'
@@ -99,7 +99,7 @@ async function checkName(socket: net.Socket, name: string) {
         write(socket, makeXt('checkName', 0, name))
 
     } catch (error) {
-        if (!(error instanceof InvalidUsernameError)) {
+        if (!(error instanceof InvalidJoinError)) {
             console.log(error)
         }
 
