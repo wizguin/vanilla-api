@@ -26,3 +26,4 @@ function createError(message: string, code: number) {
 
 export const UserNotFoundError = createError('User not found', 100)
 export const IncorrectPasswordError = createError('Incorrect password', 101)
+export const InvalidUsernameError = createError('Invalid username', 700)
