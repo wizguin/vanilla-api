@@ -1,5 +1,5 @@
-import { InvalidJoinError } from '../errors/Errors'
 import Database from '../database/Database'
+import { InvalidJoinError } from '../errors/Errors'
 
 // Letters, numbers, spaces, at least one letter
 const nameRegex = /^(?=.*[a-zA-Z])[a-zA-Z0-9 ]*$/
@@ -73,7 +73,7 @@ function trim(str: string) {
 }
 
 function toTitleCase(str: string) {
-    return str.replace(/\w\S*/g, (word: string) => (
+    return str.replace(/\w\S*/g, (word: string) =>
         word.charAt(0).toUpperCase() + word.substring(1).toLowerCase()
-    ))
+    )
 }

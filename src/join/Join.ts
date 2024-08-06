@@ -2,10 +2,10 @@ import { delimiter, makeXt, parseXml, parseXt } from './packet/Packet'
 import { InvalidJoinError } from '../errors/Errors'
 import { validateName } from '../user/Validation'
 
-import { Element } from 'elementtree'
+import type { Element } from 'elementtree'
 import net from 'net'
 
-const joinServer = net.createServer((socket) => {
+const joinServer = net.createServer(socket => {
     console.log('TCP client connected')
 
     socket.setEncoding('utf8')

@@ -16,7 +16,7 @@ app.register(fastifyFormBody)
 const routes = [Get, Join, Login]
 
 for (const route of routes) {
-    app.register(route, { prefix: '/php'})
+    app.register(route, { prefix: '/php' })
 }
 
 app.listen({ port: 7000 }, err => {

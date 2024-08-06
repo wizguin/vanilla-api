@@ -5,7 +5,7 @@ import { InvalidJoinError } from '../errors/Errors'
 
 import type { FastifyInstance } from 'fastify'
 
-export default async function (app: FastifyInstance) {
+export default async function(app: FastifyInstance) {
     app.post<{
         Body: {
             AffiliateId: string,
@@ -19,7 +19,7 @@ export default async function (app: FastifyInstance) {
             Colour: string,
             AgeGroup: string
         }
-    }>('/join.php', async (request, reply) => {
+    }>('/join.php', async(request, reply) => {
         try {
             const body = request.body
 

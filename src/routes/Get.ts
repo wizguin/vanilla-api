@@ -3,12 +3,12 @@ import { buildResponse } from '../response/Response'
 
 import type { FastifyInstance } from 'fastify'
 
-export default async function (app: FastifyInstance) {
+export default async function(app: FastifyInstance) {
     app.post<{
         Body: {
             PlayerId: string
         }
-    }>('/gp.php', async (request, reply) => {
+    }>('/gp.php', async(request, reply) => {
         try {
             const { PlayerId } = request.body
 

@@ -1,5 +1,5 @@
-import { UserNotFoundError } from '../errors/Errors'
 import Database from '../database/Database'
+import { UserNotFoundError } from '../errors/Errors'
 
 import { hash } from 'bcrypt'
 import type { User } from '@prisma/client'
@@ -16,7 +16,7 @@ export async function getUserByUsername(username: string) {
         throw new UserNotFoundError()
     }
 
-    return await getUser({ username: username })
+    return getUser({ username: username })
 }
 
 export async function getUserById(id: number) {
@@ -24,7 +24,7 @@ export async function getUserById(id: number) {
         throw new UserNotFoundError()
     }
 
-    return await getUser({ id: id })
+    return getUser({ id: id })
 }
 
 async function getUser(where: Record<string, number | string>) {

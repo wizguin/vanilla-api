@@ -1,5 +1,5 @@
-import { IncorrectPasswordError, UserNotFoundError } from '../errors/Errors'
 import { getCrumb, getUserByUsername } from '../user/User'
+import { IncorrectPasswordError, UserNotFoundError } from '../errors/Errors'
 import { buildResponse } from '../response/Response'
 import Database from '../database/Database'
 
@@ -8,13 +8,13 @@ import type { FastifyInstance } from 'fastify'
 import { randomBytes } from 'crypto'
 import type { User } from '@prisma/client'
 
-export default async function (app: FastifyInstance) {
+export default async function(app: FastifyInstance) {
     app.post<{
         Body: {
             Username: string,
             Password: string
         }
-    }>('/login.php', async (request, reply) => {
+    }>('/login.php', async(request, reply) => {
         try {
             const { Username, Password } = request.body
 
@@ -58,7 +58,7 @@ async function setLoginKey(user: User) {
         },
         data: {
             loginKey: loginKeyHash
-        },
+        }
     })
 
     return loginKey
