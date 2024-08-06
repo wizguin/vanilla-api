@@ -3,7 +3,12 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "dev": "nodemon --watch src src/App.ts"
+        "dev": "concurrently \"npm run dev:api\" \"npm run dev:join\"",
+        "dev:api": "nodemon --watch src src/App.ts",
+        "dev:join": "nodemon --watch src src/join/Join.ts",
+        "build": "tsc",
+        "start:api": "node dist/App.js",
+        "start:join": "node dist/Join.js"
     },
     "author": "wizguin",
     "license": "MIT",
@@ -11,8 +16,11 @@
         "@fastify/formbody": "^7.4.0",
         "@prisma/client": "^5.17.0",
         "@types/bcrypt": "^5.0.2",
+        "@types/elementtree": "^0.1.5",
         "@types/node": "^22.1.0",
         "bcrypt": "^5.1.1",
+        "concurrently": "^8.2.2",
+        "elementtree": "^0.1.7",
         "fastify": "^4.28.1",
         "nodemon": "^3.1.4",
         "prisma": "^5.17.0",
